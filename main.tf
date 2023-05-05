@@ -49,17 +49,16 @@ resource "aws_security_group" "es" {
   }
 }
 
-resource "aws_iam_service_linked_role" "es" {
-  aws_service_name = var.aws_service_name_for_linked_role
-  custom_suffix    = "dev"
-}
+# resource "aws_iam_service_linked_role" "es" {
+#   aws_service_name = var.aws_service_name_for_linked_role
+# }
 
 resource "time_sleep" "role_dependency" {
   create_duration = "20s"
 
   triggers = {
     role_arn       = try(aws_iam_role.cognito_es_role[0].arn, null),
-    linked_role_id = try(aws_iam_service_linked_role.es.id, "11111")
+    linked_role_id = try(var.aws_iam_service_linked_role_id, "11111")
   }
 }
 

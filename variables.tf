@@ -237,8 +237,14 @@ variable "tags" {
   default     = {}
 }
 
-variable "sg_ids"{
+variable "sg_ids" {
   type        = string
   description = "Use any pre-existing SGs."
+  default     = ""
+}
+
+variable "aws_iam_service_linked_role_id" {
+  type        = string
+  description = "IAM Service name role"
   default     = ""
 }
