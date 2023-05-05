@@ -193,7 +193,7 @@ resource "aws_opensearch_domain" "opensearch" {
     tls_security_policy             = var.tls_security_policy
   }
   tags       = var.tags
-  depends_on = [aws_iam_service_linked_role.es, time_sleep.role_dependency]
+  depends_on = [time_sleep.role_dependency]
 }
 
 
