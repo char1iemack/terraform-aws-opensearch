@@ -51,6 +51,7 @@ resource "aws_security_group" "es" {
 
 resource "aws_iam_service_linked_role" "es" {
   aws_service_name = var.aws_service_name_for_linked_role
+  custom_suffix    = "dev"
 }
 
 resource "time_sleep" "role_dependency" {
